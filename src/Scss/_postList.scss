@@ -1,0 +1,134 @@
+@import 'variables';
+
+.post_list{
+    display: flex;
+    flex-wrap:wrap;
+    flex:0  0 30%;
+    align-content: flex-end;
+    width: 60%;
+    justify-content: center;
+    margin-left: 20%;
+    
+
+    &_element{
+        width: 30%;
+        background: #ffff;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 10px;
+        padding-top: 10px;
+        border-radius: 5px;
+        &_header{
+            cursor: pointer;
+            display: flex;
+            width: 90%;
+            margin-left: 5%;
+            align-content: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid  $light_grey;
+
+            &_info{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            &_img{
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                margin-top: 15px;
+                margin-right: 5px;
+            }
+        }
+
+        &_img{
+            width: 90%;
+            margin-left: 5%;
+            height: auto;
+        }
+
+        &_middle{
+            display: flex;
+            flex-direction: column;
+            align-content: center;     
+            margin: 0 20px;       
+            &_tags{
+                display: flex;
+                padding-left: 15px;
+            }
+
+            &_info{
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1px solid  $light_grey;
+
+            }
+            &_likes{
+                display: flex;
+                justify-content: space-between;
+                &_img{
+                    width: 25px;
+                    height: 25px;
+                    margin-top: 15px;
+                    margin-right: 5px;
+                }
+            }
+
+        }
+
+
+
+    }
+
+
+
+
+}
+
+.tag_container{
+    background: $pink;
+    border-radius: 5px;
+    margin-right: 5px;
+    min-width: 50px;
+}
+
+.tag{
+    padding:2px ;
+    background: $pink;
+    border-radius: 20px;
+    color:white;
+    font-size: .7rem;
+    margin-right: 8px;
+    max-height: 20px;
+}
+
+.users_link{
+    font-weight: 700;    
+    font-size:1.4rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width :1500px) {
+    .post_list{
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+
+@media screen and (max-width :1200px) {
+    .post_list{
+        width: 95%;
+        margin-left: 2.5%;
+    }
+}
+
+@media screen and (max-width :600px) {
+    .post_list{
+        flex-direction: column;
+        margin:0;
+    }
+
+    .post_list_element{
+        width: 90%;
+    }
+}
