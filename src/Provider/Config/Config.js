@@ -1,3 +1,3 @@
 export default {
-    Google_API_Key:"AIzaSyBiiGvC211H0FSCHmlibnslYQCAnUPgZNA"
+    Google_API_Key:"ADD_YOUR_API_KEY"
 }

@@ -1,0 +1,1 @@
+Google maps api kullanabilmek için lütfen Config.js içerisindeki Google_API_Key değişkenine ApiKey'inizi ekleyiniz.
