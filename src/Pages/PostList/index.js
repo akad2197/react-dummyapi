@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom';
 import DataService from '../../Provider/Service/DataService'
 import LikeSvg from '../../Assets/Like.svg'
 import Header from '../../Components/Header'
 import Loader from '../../Components/Loader'
+
 export default  ()=>{
 
     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="heart" class="svg-inline--fa fa-heart fa-w-16 mr-1" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" color="#3c4cad"><path fill="currentColor" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"></path></svg>
 
     const [postList , setPostList] = useState([])
     const [loading,setLoading] = useState(true)
+    const [redirectFullProfile,setRedirectFullProfile] = useState(false)
+    const [profileUserID,setProfileUserID] = useState("")
 
     useEffect(()=>{
         getPostList()
@@ -20,8 +24,15 @@ export default  ()=>{
         setLoading(false)
     }
 
+    const redirectProfilePage=(userID)=>{
+       setProfileUserID(userID)
+       setRedirectFullProfile(true)
+    }
+
     if(loading)
        return(<><Loader/></>)
+    if(redirectFullProfile)
+       return(<Redirect to={{ pathname: '/userProfile', userID:profileUserID}}></Redirect>)   
 
     return(
     <>
@@ -30,7 +41,7 @@ export default  ()=>{
 
            { postList.map(post=>
             <div className="post_list_element">
-            <div className="post_list_element_header">
+            <div className="post_list_element_header" onClick={()=>redirectProfilePage(post.owner.id)}>
                 <img className="post_list_element_header_img" src={post.owner.picture}></img>
                 <p className="bold overflow_ellipsis">{post.owner.firstName +' '+ post.owner.lastName}
                 <br/><span className="light">{post.owner.email}</span>

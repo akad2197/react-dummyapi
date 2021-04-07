@@ -16,8 +16,7 @@ export default (props) => {
     }, [])
 
     const getUserProfile = async () => {
-        if (!props.location.userID) {
-            console.log("FİRED")            
+        if (!props.location.userID) {           
             Helper.ErrorMessage("Please choose profile that you want to see.You will redirect to UserList page")
             setTimeout(function () {
                 window.location.href = "/userList"
@@ -26,7 +25,6 @@ export default (props) => {
         }
          else {
             const response = await DataService.getUserFullProfile(props.location.userID)
-            console.log(response)
             setUserDetails(response);
             setLoading(false)
          }
@@ -49,8 +47,8 @@ export default (props) => {
                         </p>
                         <p className="bold"><span>{userDetails.title + ' ' + userDetails.firstName + ' ' + userDetails.lastName}</span> { }</p>
                         <p className="overflow_ellipsis bold">Gender: <span className="overflow_ellipsis light">{userDetails.gender}</span></p>
-                        <p className="overflow_ellipsis bold">Date Of Birth: <span className="overflow_ellipsis light">{userDetails.dateOfBirth}</span></p>
-                        <p className="overflow_ellipsis bold">Register Date: <span className="overflow_ellipsis light"> {userDetails.registerDate}</span></p>
+                        <p className="overflow_ellipsis bold">Date Of Birth: <span className="overflow_ellipsis light">{ new Date(userDetails.dateOfBirth).toLocaleDateString()}</span></p>
+                        <p className="overflow_ellipsis bold">Register Date: <span className="overflow_ellipsis light"> { new Date(userDetails.registerDate).toLocaleDateString()}</span></p>
                         <p className="overflow_ellipsis bold">Email: <span className="overflow_ellipsis light">{userDetails.email}</span></p>
                         <p className="overflow_ellipsis bold">Phone: <span className="overflow_ellipsis light">{userDetails.phone}</span></p>
                     </div>
